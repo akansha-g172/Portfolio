@@ -39,7 +39,7 @@ export function AboutContent() {
             }}
           >
             <img
-              src="https://drive.google.com/file/d/1494ZghnNnPNUgB9r681wNIXMb0CsLSBT/view?usp=sharing"
+              src="https://lh3.googleusercontent.com/d/1494ZghnNnPNUgB9r681wNIXMb0CsLSBT"
               alt="Akansha Gupta"
               className="w-full h-full object-cover"
             />
@@ -76,10 +76,16 @@ export function AboutContent() {
           <div className="flex gap-2">
             {[
               { label: "GitHub",    val: "github.com/akansha-g172", Icon: Github,        color: "#06B6D4" },
-              { label: "Portfolio", val: "akansha.dev",             Icon: ExternalLink,  color: "#8B5CF6" },
+              { label: "Codolio", val: "codolio.com/profile/AkanshaGupta/card",             Icon: ExternalLink,  color: "#8B5CF6" },
             ].map(({ label, val, Icon, color }) => (
               <button
                 key={label}
+                onClick={() => {
+                  window.open(
+                    "https://" + val.replace(/^https?:\/\//, ""),
+                    "_blank"
+                  )
+                }}
                 className="flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium text-white/70 hover:text-white transition-colors"
                 style={{ background: `${color}14`, border: `1px solid ${color}28` }}
               >

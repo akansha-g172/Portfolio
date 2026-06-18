@@ -31,6 +31,7 @@ import {
 import { FloatingWindow } from "./components/FloatingWindow";
 import { Dock } from "./components/Dock";
 import { SystemWidgets } from "./components/SystemWidgets";
+import { BootScreen } from "./components/BootScreen";
 import { AboutContent } from "./components/AboutContent";
 import { TerminalContent } from "./components/TerminalContent";
 import { AIContent } from "./components/AIContent";
@@ -199,9 +200,7 @@ export default function App() {
   if (isMobile) return <MobileApp />;
 
   /* Only About Me opens on boot — clean hero experience */
-  const [open, setOpen] = useState<Set<string>>(
-    new Set(["about"]),
-  );
+  const [open, setOpen] = useState<Set<string>>(new Set());
   const [pos, setPos] = useState<
     Record<string, { x: number; y: number }>
   >({});
@@ -212,6 +211,7 @@ export default function App() {
   const [time, setTime] = useState(new Date());
   const [menuOpen, setMenuOpen] = useState<string | null>(null);
   const [cascade, setCascade] = useState(0); // offset counter for new windows
+  const [bootComplete, setBootComplete] = useState(false);
   const dragRef = useRef<{
     id: string;
     mx0: number;
@@ -271,6 +271,7 @@ export default function App() {
   }, []);
 
   const openWin = (id: string) => {
+    if (!bootComplete) return;
     setOpen((s) => {
       if (s.has(id)) {
         // Window already open — just bring to front
@@ -291,6 +292,11 @@ export default function App() {
     });
     bringToFront(id);
   };
+
+  const handleBootComplete = useCallback(() => {
+    setBootComplete(true);
+    setOpen(new Set(["about"]));
+  }, []);
 
   const closeWin = (id: string) => {
     setOpen((s) => {
@@ -374,7 +380,7 @@ export default function App() {
               fontFamily: "'JetBrains Mono',monospace",
             }}
           >
-            https://drive.google.com/file/d/1E6FcLNY095Um2E-6kVjrxejqHodxj6CP/view?usp=sharing · 148 KB
+            Resume · 148 KB
           </p>
         </div>
         <div className="flex gap-3">
@@ -426,7 +432,7 @@ export default function App() {
       {/* ══ Wallpaper ══════════════════════════════════════════════════════ */}
       <div className="absolute inset-0" style={{ zIndex: 0 }}>
         <img
-          src="https://images.unsplash.com/photo-1565021369192-33ec8e3899da?w=1920&h=1080&fit=crop&auto=format&q=85"
+          src="https://images.unsplash.com/photo-1544894079-e81a9eb1da8b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="AkanshaOS wallpaper"
           className="w-full h-full object-cover"
         />
@@ -631,6 +637,7 @@ export default function App() {
 
       {/* ══ Dock ════════════════════════════════════════════════════════════ */}
       <Dock items={DOCK_ITEMS} open={open} onOpen={openWin} />
+      <BootScreen active={!bootComplete} onComplete={handleBootComplete} />
     </div>
   );
 }

@@ -141,13 +141,12 @@ export function ProjectsContent() {
             className={`rounded-xl p-4 bg-gradient-to-r ${p.gradient}`}
             style={{ border: `1px solid ${p.color}20` }}
           >
-            {/* <div className="flex items-start justify-between mb-2">
-              <h3 className="text-[13px] font-semibold text-white">{p.name}</h3>
-              <div className="flex items-center gap-1 text-[11px]" style={{ color: "rgba(255,255,255,0.38)" }}>
-                <Star className="w-3 h-3" style={{ color: "#F59E0B" }} />
-                {p.stars}
-              </div>
-            </div> */}
+            <h3
+              className="text-[17px] font-bold text-white mt-1"
+              style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: "-0.3px" }}
+            >
+              {p.name}
+            </h3>
             <p className="text-[11.5px] leading-relaxed mb-3" style={{ color: "rgba(255,255,255,0.52)" }}>
               {p.desc}
             </p>

@@ -6,8 +6,8 @@ interface ChatMsg { role: "user" | "ai"; text: string; }
 const AI_ANSWERS: Record<string, string> = {
   "Tell me about Akansha":
     "Akansha Gupta is a Full Stack Developer and AI enthusiast based in India. She builds AI-powered web applications and full-stack systems, specializing in Node.js, Python, flask, and modern AI frameworks. She's passionate about large language models and emerging technologies.",
-  "Show blockchain projects":
-    "Here are Akansha's top projects:\n\n• Web3 AI Chat Platform — GPT-4 + Polygon smart contracts for on-chain message verification\n• DeFi Analytics Dashboard — Real-time portfolio tracker with Chainlink price feeds\n• NFT Marketplace — IPFS storage, lazy minting, Hardhat-deployed ERC-721 contracts\n• DAO Governance Tool — On-chain voting with gasless transaction support",
+  "Show some of her projects":
+    "Here are Akansha's top projects:\n\n•  — GPT-4 + Polygon smart contracts for on-chain message verification\n• DeFi Analytics Dashboard — Real-time portfolio tracker with Chainlink price feeds\n• NFT Marketplace — IPFS storage, lazy minting, Hardhat-deployed ERC-721 contracts\n• DAO Governance Tool — On-chain voting with gasless transaction support",
   "Explain backend skills":
     "Akansha's backend expertise:\n\n• Node.js & Express — RESTful APIs, microservices, middleware design\n• Python & FastAPI — High-performance async APIs for AI/ML workloads\n• Databases — PostgreSQL, MongoDB\n• Cloud & DevOps — Docker, GitHub Actions\n• API Design — REST, WebSocket",
   "What technologies does she use?":
@@ -16,7 +16,7 @@ const AI_ANSWERS: Record<string, string> = {
 
 const PROMPTS = [
   "Tell me about Akansha",
-  "Show blockchain projects",
+  "Show some of her projects",
   "Explain backend skills",
   "What technologies does she use?",
 ];
@@ -33,7 +33,25 @@ export function AIContent() {
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    // Scroll the nearest scrollable container to the bottom instead of
+    // calling scrollIntoView on the element itself (which can cause the
+    // page to jump when the floating window is offscreen).
+    const el = bottomRef.current;
+    if (!el) return;
+    // Find the closest ancestor that is scrollable
+    let container: HTMLElement | null = el.parentElement as HTMLElement | null;
+    while (container) {
+      const cs = window.getComputedStyle(container);
+      const overflowY = cs.overflowY;
+      if (overflowY === 'auto' || overflowY === 'scroll') break;
+      container = container.parentElement as HTMLElement | null;
+    }
+    if (container && typeof container.scrollTo === 'function') {
+      container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+    } else {
+      // Fallback: smooth scroll the element without affecting page flow
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   }, [msgs]);
 
   const send = (text: string) => {

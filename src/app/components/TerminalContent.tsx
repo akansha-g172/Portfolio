@@ -108,8 +108,32 @@ export function TerminalContent() {
   }, []);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    // Scroll the nearest inner scrollable container instead of the page.
+    const el = bottomRef.current;
+    if (!el) return;
+    let container: HTMLElement | null = el.parentElement as HTMLElement | null;
+    while (container) {
+      const cs = window.getComputedStyle(container);
+      const overflowY = cs.overflowY;
+      if (overflowY === 'auto' || overflowY === 'scroll') break;
+      container = container.parentElement as HTMLElement | null;
+    }
+    if (container && typeof container.scrollTo === 'function') {
+      container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+    } else {
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   }, [lines]);
+
+  // Focus the input without causing the browser to scroll the viewport.
+  useEffect(() => {
+    try {
+      inputRef.current?.focus({ preventScroll: true } as FocusOptions);
+    } catch (e) {
+      // Some environments may not support the options object; fallback
+      try { inputRef.current?.focus(); } catch (_) {}
+    }
+  }, []);
 
   const run = (raw: string) => {
     const cmd = raw.trim().toLowerCase();
@@ -171,10 +195,12 @@ export function TerminalContent() {
                 setInput("");
               }
             }}
-            autoFocus
+            /* focus without scrolling the page */
+            autoFocus={false}
             spellCheck={false}
             autoComplete="off"
           />
+          {/* focus handled in useEffect with preventScroll */}
           {/* Custom blinking cursor rendered after text */}
           <span
             className="absolute pointer-events-none"

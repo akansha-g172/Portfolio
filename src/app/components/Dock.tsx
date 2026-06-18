@@ -22,25 +22,24 @@ export function Dock({ items, open, onOpen }: Props) {
   const getScale = (i: number) => {
     if (hovIdx === null) return 1;
     const d = Math.abs(i - hovIdx);
-    if (d === 0) return 1.65;
-    if (d === 1) return 1.32;
-    if (d === 2) return 1.12;
+    if (d === 0) return 1.3; // reduced primary scale
+    if (d === 1) return 1.15; // reduced neighbor scale
+    if (d === 2) return 1.05;
     return 1;
   };
 
   const getOffsetY = (i: number) => {
     if (hovIdx === null) return 0;
     const d = Math.abs(i - hovIdx);
-    if (d === 0) return -13;
-    if (d === 1) return -6;
+    if (d === 0) return -8; // reduced lift
+    if (d === 1) return -4;
     if (d === 2) return -2;
     return 0;
   };
 
   const BASE = 44;
-
   return (
-    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex flex-col items-center" style={{ zIndex: 150 }}>
+    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex flex-col items-center" style={{ zIndex: 150, pointerEvents: 'none' }}>
       {/* Main dock bar */}
       <div
         className="flex items-end gap-1 px-2.5 py-1.5 rounded-2xl relative"
@@ -51,6 +50,9 @@ export function Dock({ items, open, onOpen }: Props) {
           border: "1px solid rgba(255,255,255,0.115)",
           boxShadow:
             "0 10px 40px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.3), 0 0 0 0.5px rgba(255,255,255,0.05), inset 0 1px 0 rgba(255,255,255,0.12)",
+          height: 60,
+          alignItems: 'flex-end',
+          pointerEvents: 'auto',
         }}
       >
         {/* Inner top shine */}
@@ -78,8 +80,13 @@ export function Dock({ items, open, onOpen }: Props) {
           return (
             <div
               key={id}
-              className="flex flex-col items-center"
-              style={{ width: BASE + 8, minWidth: BASE + 8 }}
+              className="flex flex-col items-center justify-center"
+              style={{
+                width: BASE + 8,
+                minWidth: BASE + 8,
+                height: 50,
+                flex: '0 0 auto',
+              }}
             >
               <button
                 className="relative flex items-center justify-center rounded-xl"
@@ -92,8 +99,10 @@ export function Dock({ items, open, onOpen }: Props) {
                   border: `1px solid ${color}30`,
                   boxShadow:
                     hovIdx === i
-                      ? `0 0 0 1px ${color}40, 0 0 20px ${color}30, 0 8px 20px rgba(0,0,0,0.35)`
+                      ? `0 0 0 1px ${color}40, 0 0 12px ${color}20, 0 6px 12px rgba(0,0,0,0.28)`
                       : "0 2px 6px rgba(0,0,0,0.25)",
+                  pointerEvents: 'auto',
+                  cursor: 'pointer',
                 }}
                 onMouseEnter={() => setHovIdx(i)}
                 onMouseLeave={() => setHovIdx(null)}
@@ -103,8 +112,8 @@ export function Dock({ items, open, onOpen }: Props) {
                   className="transition-all"
                   style={{
                     color,
-                    width: Math.round((iconSize * 0.52)),
-                    height: Math.round((iconSize * 0.52)),
+                    width: Math.round(iconSize * 0.52),
+                    height: Math.round(iconSize * 0.52),
                   }}
                 />
 
@@ -126,7 +135,8 @@ export function Dock({ items, open, onOpen }: Props) {
                     <div
                       className="absolute left-1/2 -translate-x-1/2 top-full"
                       style={{
-                        width: 0, height: 0,
+                        width: 0,
+                        height: 0,
                         borderLeft: "5px solid transparent",
                         borderRight: "5px solid transparent",
                         borderTop: "5px solid rgba(6,10,28,0.95)",
@@ -146,44 +156,6 @@ export function Dock({ items, open, onOpen }: Props) {
             </div>
           );
         })}
-      </div>
-
-      {/* Reflection */}
-      <div
-        className="relative overflow-hidden"
-        style={{ width: "calc(100% - 2px)", height: 28, marginTop: 1 }}
-      >
-        <div
-          className="flex items-start gap-1 px-2.5 pt-0 rounded-b-xl"
-          style={{
-            transform: "scaleY(-1)",
-            background: "rgba(255,255,255,0.02)",
-            paddingTop: 6,
-            paddingBottom: 0,
-            filter: "blur(0.5px)",
-          }}
-        >
-          {items.map(({ id, Icon, color, separator }) => {
-            if (separator) return <div key={id} className="w-3 shrink-0" />;
-            return (
-              <div
-                key={id}
-                className="flex items-center justify-center rounded-xl shrink-0"
-                style={{
-                  width: BASE, height: BASE,
-                  background: `${color}10`,
-                }}
-              >
-                <Icon style={{ color, width: 24, height: 24, opacity: 0.5 }} />
-              </div>
-            );
-          })}
-        </div>
-        {/* Fade overlay */}
-        <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(to bottom, rgba(2,6,23,0.25) 0%, rgba(2,6,23,0.98) 100%)" }}
-        />
       </div>
     </div>
   );

@@ -14,13 +14,47 @@ export function ContactContent() {
   const [sent, setSent]       = useState(false);
   const [sending, setSending] = useState(false);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!name.trim() || !email.trim() || !message.trim()) return;
     setSending(true);
-    setTimeout(() => {
-      setSent(true);
-      setSending(false);
-    }, 1200);
+
+    // Read EmailJS config from Vite env variables. Replace these with
+    // your actual EmailJS service/template/public key in a .env file:
+    // VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, VITE_EMAILJS_PUBLIC_KEY
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "YOUR_SERVICE_ID";
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "YOUR_TEMPLATE_ID";
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY";
+
+    const templateParams = {
+      name,
+      email,
+      message,
+    };
+
+    // Try to send via EmailJS (client-side). If not configured, fallback to simulation.
+    if (SERVICE_ID.startsWith("YOUR_") || TEMPLATE_ID.startsWith("YOUR_") || PUBLIC_KEY.startsWith("YOUR_")) {
+      console.warn("EmailJS not configured — message not actually sent. Set VITE_EMAILJS_* env vars to enable live sending.");
+      setTimeout(() => {
+        setSent(true);
+        setSending(false);
+      }, 900);
+      return;
+    }
+
+    // Dynamically import EmailJS so the app doesn't crash if the package isn't installed.
+    // try {
+    //   // Construct package name at runtime to avoid Vite trying to analyze
+    //   // the dependency during import analysis. This lets the app run even
+    //   // when the dependency isn't installed.
+    //   await email.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+    //   setSent(true);
+    // } catch (err) {
+    //   console.error('Email send failed or EmailJS not installed:', err);
+    //   const message = err instanceof Error ? err.message : String(err);
+    //   alert(`Failed to send message: ${message}`);
+    // } finally {
+    //   setSending(false);
+    // }
   };
 
   const inputStyle: React.CSSProperties = {
