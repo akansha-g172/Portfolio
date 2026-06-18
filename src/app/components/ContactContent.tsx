@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Github, Mail, Linkedin, Send, CheckCircle, MapPin, Clock } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 const LINKS = [
   { label: "Email",    val: "akansha6500@gmail.com",          Icon: Mail,     color: "#06B6D4", href: "mailto:akansha6500@gmail.com" },
@@ -42,19 +43,21 @@ export function ContactContent() {
     }
 
     // Dynamically import EmailJS so the app doesn't crash if the package isn't installed.
-    // try {
-    //   // Construct package name at runtime to avoid Vite trying to analyze
-    //   // the dependency during import analysis. This lets the app run even
-    //   // when the dependency isn't installed.
-    //   await email.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
-    //   setSent(true);
-    // } catch (err) {
-    //   console.error('Email send failed or EmailJS not installed:', err);
-    //   const message = err instanceof Error ? err.message : String(err);
-    //   alert(`Failed to send message: ${message}`);
-    // } finally {
-    //   setSending(false);
-    // }
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        templateParams,
+        PUBLIC_KEY
+      );
+
+      setSent(true);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to send email");
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputStyle: React.CSSProperties = {
