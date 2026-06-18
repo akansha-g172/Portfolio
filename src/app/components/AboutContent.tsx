@@ -39,7 +39,7 @@ export function AboutContent() {
             }}
           >
             <img
-              src="https://lh3.googleusercontent.com/d/1494ZghnNnPNUgB9r681wNIXMb0CsLSBT"
+              src="https://lh3.googleusercontent.com/d/108Bzr44WUQBjCoOPA9kceiZ2jE5Rrrld"
               alt="Akansha Gupta"
               className="w-full h-full object-cover"
             />
