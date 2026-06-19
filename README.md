@@ -8,6 +8,8 @@ Welcome to AkanshaOS — my attempt to turn a portfolio into an interactive desk
 
 AkanshaOS is a futuristic developer operating system portfolio inspired by macOS, where visitors explore my profile through desktop applications, windows, and terminal commands.
 
+Live Link: https://akansha-gupta.vercel.app/
+
 ## Why I Built This
 
 Most portfolios follow the same structure: a homepage, a projects section, and a contact form. While that approach works, I wanted to create something that felt more interactive and memorable.
