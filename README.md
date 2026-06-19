@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+## Akansha Gupta Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+While I was thinking about creating my portfolio, I was struck by the idea of making it a little different and somewhat impressive. In our 4th semester, we studied operating systems. Although operating systems was one of the most challenging subjects I studied, it inspired the idea behind this project: why not design my portfolio as an operating system? An OS that is interactive and presents my technical skills, projects and experience.
 
-Currently, two official plugins are available:
+# AkanshaOS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Welcome to AkanshaOS — my attempt to turn a portfolio into an interactive desktop experience.
 
-## React Compiler
+AkanshaOS is a futuristic developer operating system portfolio inspired by macOS, where visitors explore my profile through desktop applications, windows, and terminal commands.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Why I Built This
 
-## Expanding the ESLint configuration
+Most portfolios follow the same structure: a homepage, a projects section, and a contact form. While that approach works, I wanted to create something that felt more interactive and memorable.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+AkanshaOS combines a desktop-like experience with a portfolio, allowing visitors to discover my projects, skills, and background in a way that feels familiar to developers.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+* Desktop-inspired user interface
+* Interactive application windows
+* Terminal-based navigation
+* Project showcase dashboard
+* Skills and experience explorer
+* Resume viewer
+* AI Assistant (planned)
+*  Responsive design for desktop and mobile devices
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+# Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Frontend:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+* React
+* TypeScript
+* Tailwind CSS
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+UI & State Management
+
+* shadcn/ui
+
+Tooling
+* Vite
+
+# Getting Started
+
+1. Clone repository
+  git clone https://github.com/akansha-g172/Portfolio
+
+2. Install dependencies
+  npm install
+
+3. Run the development server
+  npm run dev
+
+# Future Plans
+
+AkanshaOS is still evolving. Future updates may include:
+
+- AI-powered portfolio assistant
+- Interactive terminal commands
+- Command palette navigation
+- More desktop applications
+- Enhanced animations and accessibility
+
+## About Me
+
+I'm a Computer Science student who enjoys building software and understanding how systems work behind the scenes. My interests currently include backend development, AI-powered applications, and creating practical tools through hands-on projects.
+
+Thanks for visiting AkanshaOS.

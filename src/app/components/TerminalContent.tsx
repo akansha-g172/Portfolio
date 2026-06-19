@@ -29,11 +29,10 @@ const CMDS: Record<string, TermLine[]> = {
   ],
   projects: [
     { kind: "head",  text: "◆ Featured Projects" },
-    { kind: "item",  text: "  [1]  Web3 AI Chat Platform     ·  Next.js  Solidity  GPT-4  Polygon" },
-    { kind: "item",  text: "  [2]  DeFi Analytics Dashboard  ·  React  Web3.js  Chainlink  Node.js" },
-    { kind: "item",  text: "  [3]  AI Code Reviewer          ·  Python  FastAPI  Claude  GitHub API" },
-    { kind: "item",  text: "  [4]  NFT Marketplace           ·  Solidity  IPFS  Hardhat  Ethers.js" },
-    { kind: "out",   text: "  Run: open projects  →  to open the Projects window" },
+    { kind: "item",  text: "  [1]  AkanshaOS             ·  React  Tailwind CSS  Vite  " },
+    { kind: "item",  text: "  [2]  MindBloom             ·  Python  FastAPI  Docker  ReactJS" },
+    { kind: "item",  text: "  [3]  GharPayy CRM          ·  Python  FastAPI  PostgreSQL" },
+    { kind: "item",  text: "  [4]  DisasterShield        ·  Python  Flask  Openweather API" },
     { kind: "blank", text: "" },
   ],
   skills: [

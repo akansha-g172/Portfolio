@@ -49,8 +49,6 @@ const WIN_SIZE: Record<
   ai: { w: 420, h: 540, accent: "#8B5CF6" },
   projects: { w: 700, h: 500, accent: "#3B82F6" },
   skills: { w: 620, h: 460, accent: "#8B5CF6" },
-  blockchain: { w: 660, h: 460, accent: "#3B82F6" },
-  mindmap: { w: 740, h: 520, accent: "#A78BFA" },
   contact: { w: 540, h: 490, accent: "#EC4899" },
   resume: { w: 440, h: 340, accent: "#F59E0B" },
 };

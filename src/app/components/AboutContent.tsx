@@ -124,9 +124,7 @@ export function AboutContent() {
           About
         </h3>
         <p className="text-[13px] leading-[1.7]" style={{ color: "rgba(255,255,255,0.62)" }}>
-          Passionate full stack developer at the intersection of blockchain and AI. I build scalable APIs,
-          deploy smart contracts on multiple chains, and integrate large language models into production
-          systems. Currently exploring AI-ML.
+          Welcome to AkanshaOS. I'm a Computer Science student and full-stack developer who enjoys building practical software and learning how systems work behind the scenes. My work focuses on Python, web development, and AI-powered applications. This space showcases the projects I've built, the technologies I'm learning, and the ideas I'm currently exploring.
         </p>
       </div>
 
