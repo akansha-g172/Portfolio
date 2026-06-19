@@ -201,7 +201,7 @@ export default function App() {
   const [zOrders, setZOrders] = useState<
     Record<string, number>
   >({});
-  const [zCtr, setZCtr] = useState(100);
+  const [, setZCtr] = useState(100);
   const [time, setTime] = useState(new Date());
   const [menuOpen, setMenuOpen] = useState<string | null>(null);
   const [cascade, setCascade] = useState(0); // offset counter for new windows
