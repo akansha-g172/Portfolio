@@ -139,7 +139,7 @@ export function TerminalContent() {
     const promptLine: TermLine = { kind: "prompt", text: `akansha@AkanshaOS ~ % ${raw}` };
     if (cmd === "resume") {
         window.open(
-            "https://drive.google.com/file/d/1E6FcLNY095Um2E-6kVjrxejqHodxj6CP/preview",
+            "https://drive.google.com/file/d/1tfkDudBXpjQo5sxBNPLKeoNzozW6H_pQ/view?usp=sharing",
             "_blank"
         );
         return;
