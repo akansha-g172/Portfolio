@@ -1,7 +1,7 @@
 import { useState, useEffect, type ReactNode } from "react";
 import {
   User, Folder, Bot, Terminal as TermIcon, LayoutGrid,
-  Layers, Network, Share2, Mail, FileText, Wifi, Battery,
+  Layers, Mail, FileText, Wifi, Battery,
   ChevronLeft, ChevronRight,
 } from "lucide-react";
 

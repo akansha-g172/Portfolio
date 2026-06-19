@@ -15,16 +15,12 @@ import {
   Wifi,
   Battery,
   Globe,
-  Music,
   Trash2,
   FileText,
   User,
   Bot,
-  Share2,
-  Network,
   Layers,
   Mail,
-  PenTool,
   BookOpen,
 } from "lucide-react";
 

@@ -1,4 +1,4 @@
-import { Star, GitBranch, Network, Brain, Github, ExternalLink, MapPin, Zap } from "lucide-react";
+import { Star, GitBranch, Brain, Github, ExternalLink, MapPin, Zap } from "lucide-react";
 
 const STATS = [
   { label: "Experience",  val: "1+ Years",    Icon: Star,     color: "#F59E0B" },

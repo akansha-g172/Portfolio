@@ -1,4 +1,4 @@
-import { Star, Github, ExternalLink, Users, Activity, TrendingUp } from "lucide-react";
+import { Github, ExternalLink, Activity} from "lucide-react";
 
 const FEATURED = {
   name: "MindBloom",
