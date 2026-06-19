@@ -44,20 +44,61 @@ function getContent(id: string): ReactNode {
             <FileText className="w-9 h-9" style={{ color: "#F59E0B" }} />
           </div>
           <div className="text-center">
-            <h3 className="text-lg font-bold text-white mb-1" style={{ fontFamily: "'Space Grotesk',sans-serif" }}>
-              Akansha Gupta
-            </h3>
-            <p className="text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
-              Backend Developer · Blockchain · AI
-            </p>
-            <p className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.28)", fontFamily: "'JetBrains Mono',monospace" }}>
-              resume-akansha-gupta-2025.pdf · 148 KB
-            </p>
-          </div>
-          <button className="px-6 py-3 rounded-xl text-sm font-semibold text-white"
-            style={{ background: "linear-gradient(135deg,#F59E0B,#EF4444)" }}>
+          <h3
+            className="text-lg font-bold text-white mb-1"
+            style={{ fontFamily: "'Space Grotesk',sans-serif" }}
+          >
+            Akansha Gupta
+          </h3>
+          <p
+            className="text-sm"
+            style={{ color: "rgba(255,255,255,0.45)" }}
+          >
+            Full Stack Developer · AI
+          </p>
+          <p
+            className="text-xs mt-1"
+            style={{
+              color: "rgba(255,255,255,0.26)",
+              fontFamily: "'JetBrains Mono',monospace",
+            }}
+          >
+            Resume · 148 KB
+          </p>
+        </div>
+        <div className="flex gap-3">
+          <button
+            onClick={() =>
+                window.open(
+                  "https://drive.google.com/file/d/1tfkDudBXpjQo5sxBNPLKeoNzozW6H_pQ/view?usp=sharing",
+                  "_blank"
+                )
+              }
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white hover:brightness-110 transition-all"
+              style={{
+                background:
+                  "linear-gradient(135deg,#F59E0B,#EF4444)",
+              }}
+          >
             Download PDF
           </button>
+          <button
+            onClick={() =>
+              window.open(
+                "https://drive.google.com/file/d/1tfkDudBXpjQo5sxBNPLKeoNzozW6H_pQ/preview",
+                "_blank"
+              )
+            }
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium hover:text-white transition-colors"
+            style={{
+              background: "rgba(255,255,255,0.07)",
+              border: "1px solid rgba(255,255,255,0.12)",
+              color: "rgba(255,255,255,0.65)",
+            }}
+          >
+            Preview
+          </button>
+        </div>
         </div>
       );
     default: return null;
