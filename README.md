@@ -23,7 +23,7 @@ AkanshaOS combines a desktop-like experience with a portfolio, allowing visitors
 * Skills and experience explorer
 * Resume viewer
 * AI Assistant (planned)
-*  Responsive design for desktop and mobile devices
+* Responsive design for desktop and mobile devices
 
 # Tech Stack
 
