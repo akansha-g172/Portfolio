@@ -43,13 +43,13 @@ Tooling
 ## Getting Started
 
 1. Clone repository
-  git clone https://github.com/akansha-g172/Portfolio
+  <git clone https://github.com/akansha-g172/Portfolio>
 
 2. Install dependencies
-  npm install
+  <npm install>
 
 3. Run the development server
-  npm run dev
+  <npm run dev>
 
 ## Future Plans
 
