@@ -4,16 +4,16 @@ import Reactmarkdown from "react-markdown";
 
 interface ChatMsg { role: "user" | "ai"; text: string; }
 
-const AI_ANSWERS: Record<string, string> = {
-  "Tell me about Akansha":
-    "Akansha Gupta is a Full Stack Developer and AI enthusiast based in India. She builds AI-powered web applications and full-stack systems, specializing in Node.js, Python, flask, and modern AI frameworks. She's passionate about large language models and emerging technologies.",
-  "Show some of her projects":
-    "Here are Akansha's top projects:\n\n• AkanshaOS — React+Tailwind CSS based personal portfolio website\n• MindBloom — AI-powered mental health support app(In Progress)\n• GharPayy CRM — Python-based Lead management system for PG accommodation",
-  "Explain backend skills":
-    "Akansha's backend expertise:\n\n• Node.js — RESTful APIs\n• Python & FastAPI — High-performance async APIs for AI/ML workloads\n• Databases — PostgreSQL, MongoDB\n• Cloud & DevOps — Docker, GitHub Actions\n• API Design — REST, WebSocket",
-  "What technologies does she use?":
-    "Akansha's full tech arsenal:\n\nBackend: Node.js, Python, Flask, FastAPI\nAI/ML: OpenAI API, Claude API, Tensorflow\n Cloud: Vercel, Railway, Render\nFrontend: React, JavaScript, TypeScript, Tailwind CSS\n Databases: PostgreSQL, MongoDB,",
-};
+// const AI_ANSWERS: Record<string, string> = {
+//   "Tell me about Akansha":
+//     "Akansha Gupta is a Full Stack Developer and AI enthusiast based in India. She builds AI-powered web applications and full-stack systems, specializing in Node.js, Python, flask, and modern AI frameworks. She's passionate about large language models and emerging technologies.",
+//   "Show some of her projects":
+//     "Here are Akansha's top projects:\n\n• AkanshaOS — React+Tailwind CSS based personal portfolio website\n• MindBloom — AI-powered mental health support app(In Progress)\n• GharPayy CRM — Python-based Lead management system for PG accommodation",
+//   "Explain backend skills":
+//     "Akansha's backend expertise:\n\n• Node.js — RESTful APIs\n• Python & FastAPI — High-performance async APIs for AI/ML workloads\n• Databases — PostgreSQL, MongoDB\n• Cloud & DevOps — Docker, GitHub Actions\n• API Design — REST, WebSocket",
+//   "What technologies does she use?":
+//     "Akansha's full tech arsenal:\n\nBackend: Node.js, Python, Flask, FastAPI\nAI/ML: OpenAI API, Claude API, Tensorflow\n Cloud: Vercel, Railway, Render\nFrontend: React, JavaScript, TypeScript, Tailwind CSS\n Databases: PostgreSQL, MongoDB,",
+// };
 
 const PROMPTS = [
   "Tell me about Akansha",
