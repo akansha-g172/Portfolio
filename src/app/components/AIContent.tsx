@@ -62,7 +62,7 @@ export function AIContent() {
     setLoading(true);
     try {
       const response = await fetch(
-        "http://localhost:8000/chat",
+        "https://portfolio-qyn8.onrender.com/chat",
         {
           method: "POST",
           headers: {
