@@ -43,7 +43,8 @@ About:
 
 Education:
 - B.Tech in Computer Science Engineering
-- Graduated from Indian Institute of Information Technology, Kalyani in 2028
+- B.Tech in Computer Science Engineering
+- Expected Graduation: 2028
 - CGPA: 8.5/10
 
 Interests:
