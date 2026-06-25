@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Bot, Send, Mic, Sparkles } from "lucide-react";
+import Reactmarkdown from "react-markdown";
 
 interface ChatMsg { role: "user" | "ai"; text: string; }
 
@@ -54,19 +55,48 @@ export function AIContent() {
     }
   }, [msgs]);
 
-  const send = (text: string) => {
+  const send = async (text: string) => {
     if (!text.trim() || loading) return;
     setMsgs(prev => [...prev, { role: "user", text }]);
     setInput("");
     setLoading(true);
-    setTimeout(() => {
-      const answer =
-        AI_ANSWERS[text] ??
-        "Great question! I can help with information about Akansha's development work, blockchain projects, and AI integrations. Try one of the suggested prompts for the best experience, or ask me something specific!";
-      setMsgs(prev => [...prev, { role: "ai", text: answer }]);
+    try {
+      const response = await fetch(
+        "http://localhost:8000/chat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            message: text,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      setMsgs(prev => [
+        ...prev,
+        {
+          role: "ai",
+          text: data.response,
+        },
+      ]);
+    }
+    catch (error) {
+      setMsgs(prev => [
+        ...prev,
+        {
+          role: "ai",
+          text: "Sorry, I'm currently unavailable.",
+        },
+    ]);
+    }
+    finally {
       setLoading(false);
-    }, 800);
-  };
+    }
+  }; 
 
   return (
     <div className="flex flex-col h-full" style={{ fontFamily: "'Inter', sans-serif" }}>
@@ -88,7 +118,7 @@ export function AIContent() {
           </div>
           <div className="flex items-center gap-1.5">
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-[11px]" style={{ color: "rgba(255,255,255,0.38)" }}>Online · Powered by Claude</span>
+            <span className="text-[11px]" style={{ color: "rgba(255,255,255,0.38)" }}>Online · Powered by Gemini</span>
           </div>
         </div>
         <div className="ml-auto">
@@ -149,7 +179,9 @@ export function AIContent() {
                 borderRadius: m.role === "user" ? "16px 16px 4px 16px" : "16px 16px 16px 4px",
               }}
             >
+              <Reactmarkdown>
               {m.text}
+              </Reactmarkdown>
             </div>
           </div>
         ))}
