@@ -70,7 +70,7 @@ function getContent(id: string): ReactNode {
           <button
             onClick={() =>
                 window.open(
-                  "https://drive.google.com/file/d/1tfkDudBXpjQo5sxBNPLKeoNzozW6H_pQ/view?usp=sharing",
+                  "https://drive.google.com/file/d/1t_os15LiX3rpOi7uqUxzXvTI24lUMC-J/view?usp=sharing",
                   "_blank"
                 )
               }
@@ -85,7 +85,7 @@ function getContent(id: string): ReactNode {
           <button
             onClick={() =>
               window.open(
-                "https://drive.google.com/file/d/1tfkDudBXpjQo5sxBNPLKeoNzozW6H_pQ/preview",
+                "https://drive.google.com/file/d/1t_os15LiX3rpOi7uqUxzXvTI24lUMC-J/preview",
                 "_blank"
               )
             }
